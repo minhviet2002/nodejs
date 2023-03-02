@@ -1,0 +1,40 @@
+<div class="container">
+  <br /><h2>Đăng kí tài khoản người dùng</h2><br />
+  {{#if err}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{{err}}.</strong>
+      <a
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      >Xóa</a>
+    </div>
+  {{/if}}
+  <form
+    method="post"
+    action="/register"
+    style="padding-left: 20px;"
+    class="row g-3"
+  >
+    <div class="col-auto">
+      <label for="">Name</label>
+      <input type="text" name="name" id="" /><br />
+      <label for="">UserName</label>
+      <input type="text" name="username" id="" /><br />
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input type="password" name="password" id="inputPassword2" /><br />
+      <a
+        style="display: flex;
+    right: auto;
+    justify-content: flex-end;
+    padding-bottom: 5px;
+    text-decoration: underline;"
+        href="/login"
+      >Đã có tài khoản</a>
+      <div style="float: right;">
+        <button type="submit" class="btn btn-primary">Đăng kí</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,195 @@
+<div class="container">
+  <br /><h2>Thêm sản phẩm</h2><br />
+  <a href="/admin/products/" class="btn btn-primary">Quay lại</a><div
+  ></div><br />
+  <form
+    method="post"
+    action="/admin/products/more-product"
+    style="padding-left: 20px;"
+    class="row g-3"
+  >
+    <div class="col">
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlInput1"
+          class="form-label"
+        >Categories</label>
+        <select
+          class="form-select max-width"
+          aria-label="Default select example"
+          name="categorie"
+          required
+        >
+          <option selected value="">------------- Category Option -------------</option>
+          {{#each categories}}
+            <option value="{{this.searchTerm}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input
+          type="text"
+          name="title"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Tiêu đề"
+          required
+        />
+      </div>
+      {{! Description }}
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlTextarea1"
+          class="form-label"
+        >Description</label>
+        <textarea
+          name="description"
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        ></textarea>
+      </div>
+      {{! Image }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Link Image</label>
+        <input
+          type="text"
+          name="image"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Đường dẫn file ảnh"
+          required
+        />
+      </div>
+      {{! originalPrice }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Original Price</label>
+        <input
+          type="text"
+          name="originalPrice"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Giá gốc"
+          required
+        />
+      </div>
+      {{! salePrice }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Sale Price</label>
+        <input
+          type="text"
+          name="salePrice"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Giá giảm"
+          required
+        />
+      </div>
+      {{! isPrômtion}}
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlInput1"
+          class="form-label"
+        >Is-Promotion</label>
+        <select
+          name="isPromotion"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          <option selected value="">------------- Is-Promotion Option -------------</option>
+          <option value="false">False</option>
+          <option value="true">True</option>
+        </select>
+      </div>
+      {{! promotionPercent }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Promotion
+          Percent</label>
+        <input
+          type="text"
+          name="promotionPercent"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Phần trăm khuyến mãi"
+          required
+        />
+      </div>
+      {{! isFreeship}}
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlInput1"
+          class="form-label"
+        >Is-Freeship</label>
+        <select
+          name="isFreeShip"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          <option selected value="">------------- Is-Freeship Option -------------</option>
+          <option value="false">False</option>
+          <option value="true">True</option>
+        </select>
+      </div>
+      {{! Count }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Count</label>
+        <input
+          type="text"
+          name="count"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Số lượng sản phẩm"
+          required
+        />
+      </div>
+      {{! Color }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Color</label>
+        <select
+          name="color"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          <option selected value="">------------- Color -------------</option>
+          <option value="Vàng">Vàng</option>
+          <option value="Trắng">Trắng</option>
+          <option value="Đỏ">Đỏ</option>
+          <option value="Đen">Đen</option>
+          <option value="Xanh">Xanh</option>
+          <option value="Hồng">Hồng</option>
+          <option value="Tím">Tím</option>
+        </select>
+      </div>
+      {{! Size }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Size</label>
+        <select
+          name="size"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          <option selected value="">------------- Size -------------</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+        </select>
+      </div>
+
+      <div style="float: right;">
+        <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+      </div>
+    </div>
+  </form>
+
+</div>

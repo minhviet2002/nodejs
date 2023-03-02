@@ -1,0 +1,21 @@
+<div class="container">
+  <br /><h2>Cập nhật tài khoản người dùng</h2><br />
+  <form
+    method="post"
+    action="./update/put?_method=PUT"
+    style="padding-left: 20px;"
+    class="row g-3"
+  >
+    <div class="col-auto">
+      <label for="">Name</label>
+      <input type="text" name="name" value="{{user.name}}" id="" /><br />
+      <label for="">UserName</label>
+      <input type="text" name="username" value="{{user.username}}" id="" /><br />
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input type="password" name="password" value="{{user.password}}" id="inputPassword2" /><br />
+      <div style="float: right;">
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>

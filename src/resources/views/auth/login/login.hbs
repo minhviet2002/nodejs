@@ -1,0 +1,52 @@
+<div class="container">
+  <br /><h2>Đăng nhập</h2>  
+  <a href="/" class="btn btn-primary">Quay về trang chủ</a><div></div><br>
+  {{#if err}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{{err}}.</strong>
+      <a
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      >Xóa</a>
+    </div>
+  {{/if}}
+  {{#if success}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{success}}.</strong>
+      <a
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      >Xóa</a>
+    </div>
+  {{/if}}
+  <form
+    method="post"
+    action="/login/post"
+    style="padding-left: 20px;"
+    class="row g-3"
+  >
+
+    <div class="col-auto">
+      <label for="">UserName</label>
+      <input type="text" name="username" id="" required /><br />
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input type="password" name="password" id="inputPassword2" required /><br
+      />
+      <a
+        style="display: flex;
+    right: auto;
+    justify-content: flex-end;
+    padding-bottom: 5px;
+    text-decoration: underline;"
+        href="/register"
+      >Chưa có tài khoản</a>
+      <div style="float: right;">
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <br /><h2>Cập nhật loại sản phẩm</h2><br />
+  <form
+    method="post"
+    action="./update?_method=PUT"
+    style="padding-left: 20px;"
+    class="row g-3"
+  >
+    <div class="col-auto">
+      <label for="">Name</label>
+      <input type="text" name="name" value="{{categories.name}}" id="" /><br />
+      <label for="">Search Term</label>
+      <input type="text" name="username" value="{{categories.searchTerm}}" id="" /><br
+      />
+      <div style="float: right;">
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+  </form>
+</div>

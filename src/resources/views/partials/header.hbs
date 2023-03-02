@@ -1,0 +1,179 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary header">
+  <div class="container-fluid">
+    {{#if isAdmin}}
+      <a class="navbar-brand" href="/admin/users"><img
+          style="width:135px; height:80px;"
+          src="https://png.pngtree.com/template/20191218/ourlarge/pngtree-modern-logos-for-sneakers-can-be-used-for-store-logos-or-image_340676.jpg"
+          alt=""
+        /></a>
+    {{else}}
+      <a class="navbar-brand" href="/"><img
+          style="width:135px; height:80px;"
+          src="https://png.pngtree.com/template/20191218/ourlarge/pngtree-modern-logos-for-sneakers-can-be-used-for-store-logos-or-image_340676.jpg"
+          alt=""
+        /></a>
+    {{/if}}
+    <ul class="navbar-nav none-lt navbar-nav-custom me-auto mb-2 mb-lg-0">
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-success my-2 my-sm-0"
+          type="submit"
+        >Search</button>
+      </form>
+    </ul>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon">≡</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav navbar-nav-custom me-auto mb-2 mb-lg-0">
+        {{#if isAdmin}}
+          <li class="nav-item">
+            <a class="nav-link item-header" href="/admin/users">Quản lí người
+              dùng
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link item-header" href="/admin/categories">Quản lí
+              loại sản phẩm
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/admin/products"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Quản lí sản phẩm
+            </a>
+            {{#if categorieList}}
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {{#each categorieList}}
+                  <li><a
+                      class="dropdown-item"
+                      href="/admin/products/{{this.slug}}"
+                    >{{this.name}}</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                {{/each}}
+              </ul>
+            {{/if}}
+          </li>
+        {{else}}
+          {{#if isUser}}
+            <li class="nav-item">
+              <a
+                class="nav-link item-header active"
+                aria-current="page"
+                href="/"
+              >Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="/products"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sản phẩm
+              </a>
+              {{#if categorieList}}
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {{#each categorieList}}
+                    <li><a
+                        class="dropdown-item"
+                        href="/products/{{this.slug}}"
+                      >{{this.name}}</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link item-header" href="/carts">Giỏ hàng (0)
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link item-header" href="/admin/users">Lịch sử mua
+                hàng
+              </a>
+            </li>
+            <form class="form-inline none-mb-tl my-2 my-lg-0">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-outline-success my-2 my-sm-0"
+                type="submit"
+              >Search</button>
+            </form>
+          {{/if}}
+        {{/if}}
+
+      </ul>
+
+      {{#if userLogin}}
+        <ul class="navbar-nav paddingLeft-20 me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{userLogin.name}}
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-custom"
+              aria-labelledby="navbarDropdown"
+            >
+              <li><a class="dropdown-item" href="/me/profile">Thông tin cá nhân</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="">Đổi mật khẩu</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="" href="#"><form
+                    style="width: 100%;"
+                    method="post"
+                    action="/logout"
+                  >
+                    <button
+                      class="dropdown-item button-logout"
+                      type="submit"
+                    >Đăng xuất</button>
+                  </form></a></li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      {{else}}
+        <a class="" href="/login">Đăng nhập</a>
+      {{/if}}
+
+    </div>
+
+  </div>
+</nav>

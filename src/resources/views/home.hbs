@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-sm-2 list">
+    <aside class="">
+      <h6 class="header-categories">Danh mục sản phẩm</h6>
+      <div class="poly-cart">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <ul class="list-categories" class="col-sm-7">
+              {{#each categories}}
+                <li class="item-hover"><a
+                    href="/products/{{this.slug}}"
+                  >{{this.name}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="col-sm-10">
+    <div style="padding-top: 20px;" class="row">
+
+      <article class="col-sm-12">
+        <div class="container-column">
+          {{#each products}}
+            <div
+              class="card"
+              data-aos="flip-left"
+              data-aos-easing="linear"
+              data-aos-duration="1200"
+              style="width: 17rem;"
+            >
+              <div style="overflow: hidden;">
+                <img
+                  class="card-img-top"
+                  src="{{this.image}}"
+                  alt="Card image cap"
+                />
+              </div>
+
+              <div class="card-body">
+                <h6 class="card-title">{{this.title}}</h6>
+                <p class="card-text">{{this.description}}</p>
+                <div>
+                  <span class="priceOrigin">{{formatCurrency
+                      this.originalPrice
+                    }}</span>
+                  <span class="priceSale">{{formatCurrency
+                      this.salePrice
+                    }}</span>
+                </div>
+                <a
+                  href="/products/{{this.categorie}}/{{this._id}}"
+                  class="btn btn-primary"
+                >Xem chi tiết</a>
+                <a href="#" class="btn btn-warning">Mua</a>
+              </div>
+
+            </div>
+          {{/each}}
+        </div>
+      </article>
+
+    </div>
+  </div>
+</div>

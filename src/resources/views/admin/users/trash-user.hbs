@@ -1,0 +1,39 @@
+<div class="container">
+<br><h2>Quản lí tài khoản người dùng đã xóa</h2><br>
+<a href="/admin/users" class="btn btn-primary">Quay lại</a><div></div><br>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col" colspan="2" >Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+{{#if users}}
+{{#each users}}
+    <tr>
+      <th scope="row">{{ sum @index 1 }}</th>
+      <td>{{ this.name }}</td>
+      <td>{{ this.username }}</td>
+      <td>{{ this.password }}</td>
+      <td style="display: flex;">
+         <form style="padding-right: 5px;" method="post" action="/admin/users/{{this._id}}/restore?_method=PATCH">
+          <button type="submit" class="btn btn-warning">Khôi phục</button>
+         </form>
+      <form  method="post" action="/admin/users/{{this._id}}/delete-force?_method=DELETE">
+        <button type="submit" onclick="return confirm('Bạn có muốn xóa người dùng này không?');"  class="btn btn-danger">Xóa vĩnh viễn</button>
+      </form>
+      </td>
+{{/each}}
+{{else}}
+  <tr>
+    <td>Thùng rác trống.</td>
+  </tr>
+{{/if}}
+  </tbody>
+</table>
+</div>

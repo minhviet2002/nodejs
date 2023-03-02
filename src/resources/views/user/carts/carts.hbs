@@ -1,0 +1,50 @@
+<br /><h2 style="padding-bottom: 15px;" class="paddingLeft-40">Sản phẩm thuộc
+  thương hiệu "{{slugCategorie.name}}"</h2><br />
+<div class="container">
+  <div class="row">
+    {{#each product}}
+      <div class="col">
+        <img class="product-img" src="{{this.image}}" alt="" />
+      </div>
+      <div class="col">
+        <div class="product-center">
+          <h3 class="product-title">{{this.title}}</h3>
+          <div class="product-price">
+            <span class="product-price-sale">{{formatCurrency this.salePrice}}</span>
+            <span class="product-price-original">{{formatCurrency this.originalPrice}}</span>
+          </div>
+          <div class="product_sku">
+            Mã sản phẩm:
+            <span>{{this._id}}</span>
+          </div>
+          <div class="product-brand">
+            <span class="product-categorie">Thương hiệu:
+              <b class="product-categorie-item">{{this.categorie}}</b> | </span>
+            <span class="product-categorie">Loại:
+              <b class="product-categorie-item">Đang cập nhật...</b></span>
+          </div>
+          <div class="product-review">
+            Mô tả: 
+            <div class="product-des">{{this.description}}</div>
+          </div>
+          <hr>
+          <div class="product-size">
+            Kích thước: 
+            <span>{{this.size}}</span>
+          </div>
+          <div class="product-count">
+            Số lượng:
+            <button class="product-count-reduce">-</button>
+            <input type="text" value="1" name="count-option" maxlength="2" class="product-count-input">
+             <button class="product-count-plus">+</button>
+          </div>
+          <div class="product-action">
+            <button class="product-action-button">Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+
+      </div>
+    {{/each}}
+  </div>
+
+</div>

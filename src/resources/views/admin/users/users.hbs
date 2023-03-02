@@ -1,0 +1,45 @@
+<div class="container">
+
+<br><h2>Quản lí tài khoản người dùng</h2><br>
+
+<a href="/admin/users/more-user" class="btn btn-primary">Thêm tài khoản</a><div></div><br>
+<form class="input-group flex-nowrap" method="get" action="/admin/users/search">
+  <input type="text" class="form-control" name="search" value="{{searchKeyword}}" placeholder="Nhập từ khóa tìm kiếm tài khoản người dùng" aria-label="Username" aria-describedby="addon-wrapping">
+  <button type="submit" style="cursor: pointer;" class="input-group-text" id="addon-wrapping">Tìm kiếm</button>
+</form>
+<br>
+<a href="/admin/users/trash">Thùng rác ({{ count }})</a>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col" colspan="2" >Options</th>
+    </tr>
+  </thead>
+  <tbody>
+   {{#if users}}
+{{#each users}}
+    <tr>
+      <th scope="row">{{ sum @index 1 }}</th>
+      <td>{{ this.name }}</td>
+      <td>{{ this.username }}</td>
+      <td>{{ this.password }}</td>
+      <td style="display: flex;">
+      <form style="padding-right: 7px;" method="post" action="/admin/users/{{this._id}}/delete?_method=DELETE">
+        <button type="submit" onclick="return confirm('Bạn có muốn xóa người dùng này không?');"  class="btn btn-danger">Xóa</button>
+      </form>
+        <a href="/admin/users/{{this._id}}/update" class="btn btn-warning">Sửa</a>
+      </td>
+{{/each}}
+{{else}}
+  <tr>
+    <td>Tài khoản người dùng trống.</td>
+  </tr>
+{{/if}}
+  </tbody>
+</table>
+</div>

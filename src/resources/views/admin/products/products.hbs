@@ -1,0 +1,67 @@
+<div class="container">
+  <br /><h2>Quản lí sản phẩm thuộc thương hiệu "{{slugCategorie.name}}"</h2><br />
+
+  <a href="/admin/products/more-product" class="btn btn-primary">Thêm sản phẩm</a><div
+  ></div><br />
+  <form
+    class="input-group flex-nowrap"
+    method="get"
+    action="/admin/categories/search"
+  >
+    <input
+      type="text"
+      class="form-control"
+      name="search"
+      value="{{searchKeyword}}"
+      placeholder="Nhập từ khóa tìm sản phẩm"
+      aria-label="Username"
+      aria-describedby="addon-wrapping"
+    />
+    <button
+      type="submit"
+      style="cursor: pointer;"  
+      class="input-group-text"
+      id="addon-wrapping"
+    >Tìm kiếm</button>
+  </form>
+  <br />
+  <a href="/admin/products/{{slugCategorie.searchTerm}}/trash">Thùng rác ({{countDeleted}})</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+         <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Color</th>
+        <th scope="col">Size</th>
+        <th scope="col">Count</th>
+        <th scope="col">Original Price</th>
+        <th scope="col" colspan="2">Options</th>
+      </tr>
+    </thead>
+    <tbody class="tbody-product">
+      {{#if products}}
+        {{#each products}}
+          <tr>
+      <td scope="row">{{ sum @index 1 }}</td>
+      <td><img class="image-product" src="{{ this.image }}" alt="{{ this.title }}"></td>
+      <td>{{ this.title }}</td>
+      <td>{{ this.color }}</td>
+      <td>{{ this.size}}</td>
+      <td>{{ this.count}}</td>
+      <td>{{ formatCurrency this.originalPrice }}</td>
+      <td>
+      <form style="padding-right: 7px;" method="post" action="/admin/products/{{this.categorie}}/{{this._id}}/delete?_method=DELETE">
+        <button type="submit" onclick="return confirm('Bạn có muốn xóa sản phẩm này không?');"  class="btn btn-danger">Xóa</button>
+      </form>
+        <a href="/admin/products/{{ this.categorie }}/{{ this._id }}/update" class="btn btn-warning">Sửa</a>
+      </td>
+        {{/each}}
+      {{else}}
+        <tr>
+          <td>Sản phẩm trống.</td>
+        </tr>
+      {{/if}}
+    </tbody>
+  </table>
+</div>

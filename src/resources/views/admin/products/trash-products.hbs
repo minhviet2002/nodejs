@@ -1,0 +1,44 @@
+<div class="container">
+<br><h2>Quản lí sản phẩm "{{categorie.name}}" đã xóa</h2><br>
+<a href="/admin/products/{{categorie.searchTerm}}" class="btn btn-primary">Quay lại</a><div></div><br>
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+         <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Color</th>
+        <th scope="col">Size</th>
+        <th scope="col">Count</th>
+        <th scope="col">Original Price</th>
+        <th scope="col" colspan="2">Options</th>
+      </tr>
+    </thead>
+    <tbody class="tbody-product">
+      {{#if products}}
+        {{#each products}}
+          <tr>
+      <td scope="row">{{ sum @index 1 }}</td>
+      <td><img class="image-product" src="{{ this.image }}" alt="{{ this.title }}"></td>
+      <td>{{ this.title }}</td>
+      <td>{{ this.color }}</td>
+      <td>{{ this.size}}</td>
+      <td>{{ this.count}}</td>
+      <td>{{ formatCurrency this.originalPrice }}</td>
+      <td >
+         <form style="padding-right: 7px;" method="post" action="/admin/products/{{this.categorie}}/{{this._id}}/restore?_method=PATCH">
+          <button type="submit" class="btn btn-warning">Khôi phục</button>
+         </form>
+      <form  method="post" action="/admin/products/{{this.categorie}}/{{this._id}}/delete-force?_method=DELETE">
+        <button type="submit" onclick="return confirm('Bạn có muốn xóa sản phẩm này vĩnh viễn không?');"  class="btn btn-danger">Xóa vĩnh viễn</button>
+      </form>
+      </td>
+        {{/each}}
+      {{else}}
+        <tr>
+          <td>Sản phẩm đã xóa không tồn tại.</td>
+        </tr>
+      {{/if}}
+    </tbody>
+  </table>
+</div>

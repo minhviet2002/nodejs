@@ -1,0 +1,381 @@
+<div class="container">
+  <br /><h2>Cập nhật sản phẩm</h2><br />
+  <div><a href="/admin/products/{{categorie.slug}}" class="btn btn-primary">Quay
+      lại</a></div><br />
+  <form
+    method="post"
+    action="./update?_method=PUT"
+    style="padding-left: 20px;"
+    class="row g-3"
+  >
+    <div class="col">
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlInput1"
+          class="form-label"
+        >Categories</label>
+        <select
+          class="form-select max-width"
+          aria-label="Default select example"
+          name="categorie"
+          required
+        >
+          <option
+            selected
+            value="{{categorie.searchTerm}}"
+          >{{categorie.name}}</option>
+        </select>
+      </div>
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input
+          type="text"
+          name="title"
+          value="{{product.title}}"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Tiêu đề"
+          required
+        />
+      </div>
+      {{! Description }}
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlTextarea1"
+          class="form-label"
+        >Description</label>
+        <textarea
+          name="description"
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          rows="3"
+        >{{product.description}}</textarea>
+      </div>
+      {{! Image }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Link Image</label>
+        <input
+          type="text"
+          name="image"
+          value="{{product.image}}"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Đường dẫn file ảnh"
+          required
+        />
+      </div>
+      {{! originalPrice }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Original Price</label>
+        <input
+          type="text"
+          name="originalPrice"
+          value="{{product.originalPrice}}"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Giá gốc"
+          required
+        />
+      </div>
+      {{! salePrice }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Sale Price</label>
+        <input
+          type="text"
+          name="salePrice"
+          value="{{product.salePrice}}"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Giá giảm"
+          required
+        />
+      </div>
+      {{! isPrômtion}}
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlInput1"
+          class="form-label"
+        >Is-Promotion</label>
+        <select
+          name="isPromotion"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          {{#ifeq product.isPromotion true}}
+            <option selected value="">------------- Is-Promotion Option
+              -------------</option>
+            <option value="false">False</option>
+            <option selected value="true">True</option>
+          {{/ifeq}}
+          {{#ifeq product.isPromotion false}}
+            <option selected value="">------------- Is-Promotion Option
+              -------------</option>
+            <option selected value="false">False</option>
+            <option value="true">True</option>
+          {{/ifeq}}
+
+        </select>
+      </div>
+      {{! promotionPercent }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Promotion
+          Percent</label>
+        <input
+          type="text"
+          name="promotionPercent"
+          value="{{product.promotionPercent}}"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Phần trăm khuyến mãi"
+          required
+        />
+      </div>
+      {{! isFreeship}}
+      <div class="mb-3 flex">
+        <label
+          for="exampleFormControlInput1"
+          class="form-label"
+        >Is-Freeship</label>
+        <select
+          name="isFreeShip"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          {{#ifeq product.isFreeShip true}}
+            <option value="">------------- Is-Freeship Option -------------</option>
+            <option value="false">False</option>
+            <option selected value="true">True</option>
+          {{/ifeq}}
+          {{#ifeq product.isFreeShip false}}
+            <option value="">------------- Is-Freeship Option -------------</option>
+            <option selected value="false">False</option>
+            <option value="true">True</option>
+          {{/ifeq}}
+        </select>
+
+      </div>
+      {{! Count }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Count</label>
+        <input
+          type="text"
+          name="count"
+          value="{{product.count}}"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Số lượng sản phẩm"
+          required
+        />
+      </div>
+      {{! Color }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Color</label>
+        <select
+          name="color"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          {{#ifeq product.color "Vàng"}}
+            <option value="">------------- Color -------------</option>
+            <option selected value="Vàng">Vàng</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Đỏ">Đỏ</option>
+            <option value="Đen">Đen</option>
+            <option value="Xanh">Xanh</option>
+            <option value="Hồng">Hồng</option>
+            <option value="Tím">Tím</option>
+          {{/ifeq}}
+          {{#ifeq product.color "Trắng"}}
+            <option value="">------------- Color -------------</option>
+            <option value="Vàng">Vàng</option>
+            <option selected value="Trắng">Trắng</option>
+            <option value="Đỏ">Đỏ</option>
+            <option value="Đen">Đen</option>
+            <option value="Xanh">Xanh</option>
+            <option value="Hồng">Hồng</option>
+            <option value="Tím">Tím</option>
+          {{/ifeq}}
+          {{#ifeq product.color "Đỏ"}}
+            <option value="">------------- Color -------------</option>
+            <option value="Vàng">Vàng</option>
+            <option value="Trắng">Trắng</option>
+            <option selected value="Đỏ">Đỏ</option>
+            <option value="Đen">Đen</option>
+            <option value="Xanh">Xanh</option>
+            <option value="Hồng">Hồng</option>
+            <option value="Tím">Tím</option>
+          {{/ifeq}}
+          {{#ifeq product.color "Đen"}}
+            <option value="">------------- Color -------------</option>
+            <option value="Vàng">Vàng</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Đỏ">Đỏ</option>
+            <option selected value="Đen">Đen</option>
+            <option value="Xanh">Xanh</option>
+            <option value="Hồng">Hồng</option>
+            <option value="Tím">Tím</option>
+          {{/ifeq}}
+          {{#ifeq product.color "Xanh"}}
+            <option value="">------------- Color -------------</option>
+            <option value="Vàng">Vàng</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Đỏ">Đỏ</option>
+            <option value="Đen">Đen</option>
+            <option selected value="Xanh">Xanh</option>
+            <option value="Hồng">Hồng</option>
+            <option value="Tím">Tím</option>
+          {{/ifeq}}
+          {{#ifeq product.color "Hồng"}}
+            <option value="">------------- Color -------------</option>
+            <option value="Vàng">Vàng</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Đỏ">Đỏ</option>
+            <option value="Đen">Đen</option>
+            <option value="Xanh">Xanh</option>
+            <option selected value="Hồng">Hồng</option>
+            <option value="Tím">Tím</option>
+          {{/ifeq}}
+          {{#ifeq product.color "Tím"}}
+            <option value="">------------- Color -------------</option>
+            <option value="Vàng">Vàng</option>
+            <option value="Trắng">Trắng</option>
+            <option value="Đỏ">Đỏ</option>
+            <option value="Đen">Đen</option>
+            <option value="Xanh">Xanh</option>
+            <option selected value="Hồng">Hồng</option>
+            <option selected value="Tím">Tím</option>
+          {{/ifeq}}
+
+        </select>
+      </div>
+      {{! Size }}
+      <div class="mb-3 flex">
+        <label for="exampleFormControlInput1" class="form-label">Size</label>
+        <select
+          name="size"
+          class="form-select max-width"
+          aria-label="Default select example"
+          required
+        >
+          {{#ifeq product.size "36"}}
+            <option value="">------------- Size -------------</option>
+            <option selected value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "37"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option selected value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "38"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option selected value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "39"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option selected value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "40"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option selected value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "41"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option selected value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "42"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option selected value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "43"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option selected value="43">43</option>
+            <option value="44">44</option>
+          {{/ifeq}}
+          {{#ifeq product.size "44"}}
+            <option value="">------------- Size -------------</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option selected value="44">44</option>
+          {{/ifeq}}
+
+        </select>
+      </div>
+
+      <div style="float: right;">
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+
+  </form>
+</div>
